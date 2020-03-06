@@ -9,4 +9,7 @@
 - python manage.py migrate //DBテーブル作成
 - python manage.py makemigrations polls //モデルに変更があったことを伝える
 - python manage.py createsuperuser //管理者登録
-- 
+-
+
+これがよさそう？
+https://noumenon-th.net/programming/2019/11/25/django-abstractuser/
