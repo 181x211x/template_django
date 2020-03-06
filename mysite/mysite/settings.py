@@ -38,6 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bbs.apps.BbsConfig',
+    'django.contrib.sites',    #追加
+    'allauth',                 #追加
+    'allauth.account',         #追加
+    'allauth.socialaccount',   #追加
+
 ]
 
 MIDDLEWARE = [
@@ -55,7 +60,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS':[os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -119,3 +124,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+LOGIN_REDIRECT_URL = '/'
+
+SITE_ID = 1
+LOGIN_REDIRECT_URL = 'index'
+
+ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login/'
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'cookiso862@gmail.com'
+EMAIL_HOST_PASSWORD = 'cooksio1'
+EMAIL_USE_TLS = True
