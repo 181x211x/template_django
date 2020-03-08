@@ -7,7 +7,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView
 from django.shortcuts import redirect
-
+from .forms import SignUpForm
 
 # Create your views here.
 
@@ -19,8 +19,9 @@ def home(request):
     return render(request,'home.html')
 
 
+
 class SignUp(CreateView):
-    form_class = UserCreationForm
+    form_class = SignUpForm
 
     def post(self, request, *args, **kwargs):
         form = self.form_class(data=request.POST)
