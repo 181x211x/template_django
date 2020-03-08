@@ -109,30 +109,24 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ja'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tokyo'
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-LOGIN_REDIRECT_URL = '/'
+
 
 SITE_ID = 1
-LOGIN_REDIRECT_URL = 'index'
-
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'index'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login/'
-
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'cookiso862@gmail.com'
-EMAIL_HOST_PASSWORD = 'cooksio1'
-EMAIL_USE_TLS = True
