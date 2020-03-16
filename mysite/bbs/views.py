@@ -1,13 +1,15 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import message
+from .models import MessageDB
 from django.template import loader
-from . import forms
+from . import forms,models
+from django.template.context_processors import csrf
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView
 from django.shortcuts import redirect
 from .forms import SignUpForm
+from .forms import MessageForm
 
 # Create your views here.
 
@@ -16,7 +18,18 @@ def index(request):
 
 
 def home(request):
-    return render(request,'home.html')
+    form = MessageForm(request.POST or None)
+    form1 = forms.MessageForm()
+    message_db = MessageDB.objects.all()
+    data = {
+    'message' : form1,
+    'message_db': message_db
+    }
+    if form.is_valid():
+        models.MessageDB.objects.create(**form.cleaned_data)
+        return redirect('home')
+
+    return render(request,'home.html',data)
 
 
 

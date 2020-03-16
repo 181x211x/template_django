@@ -4,6 +4,7 @@ from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 
-class message(models.Model):
-    message_text = models.CharField(max_length=200) #文字列
-    pub_date = models.DateTimeField('date published') #日付
+class MessageDB(models.Model):
+    username = models.CharField('名前',max_length=100)
+    message = models.CharField('本文',max_length=200)
+    date = models.DateField('作成日')

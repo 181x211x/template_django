@@ -3,7 +3,33 @@
 {% block title %}Home{% endblock %}
 {% block content %}
   Hi {{ user.username }}!
+  <p><a href="{% url 'logout' %}">logout</a></p>
+{% block body %}
+  <h1>掲示板 - 書き込みフォーム</h1>
 
-<p><a href="{% url 'logout' %}">logout</a></p>
+<form method="post" action="">
+  {% csrf_token %}
+  日付:{{message.date}}
+<br>
+  {{ message.username.label }}：
+  {{ message.username }}
+<br>
+  {{ message.message.label }}：
+  {{ message.message }}
+<br>
+  <input type="submit" value="送信">
+
+  <hr>
+{% endblock %}
+<table>
+  {% for i in message_db %}
+        <tr>
+          <td>{{ i.date }}：</td>
+          <td>{{ i.username }}：</td>
+          <td>{{ i.message }}</td>
+        </tr>
+        {% endfor %}
+</table>
+
 
 {% endblock %}
